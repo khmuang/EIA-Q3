@@ -1,4 +1,4 @@
-// Automatically generated at 2026-05-20 12:30:04
+// Automatically generated at 2026-05-20 16:04:43
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -64,7 +64,7 @@ const DASHBOARD_DATA = {
             },
             "Q2": {
                 "total": 145,
-                "success": 8
+                "success": 2
             }
         },
         "7": {
@@ -249,4 +249,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-05-20 12:30:04';
+const LAST_UPDATED = '2026-05-20 16:04:43';
