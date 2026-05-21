@@ -320,6 +320,7 @@
         .summary-info-card { 
             background: var(--glass-bg); border: 1px solid var(--glass-border); 
             padding: 25px; border-radius: 20px; backdrop-filter: var(--glass-blur);
+            overflow-x: auto; max-width: 100%;
         }
         .summary-info-card h4 { color: var(--accent-blue); margin-bottom: 15px; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
         .summary-info-card ul { list-style: none; padding: 0; margin-top: 10px; }
@@ -341,7 +342,8 @@
 
         .critical-box { 
             background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.2); 
-            padding: 20px; border-radius: 15px; margin-top: 20px;
+            padding: 25px; border-radius: 20px; margin-top: 20px; backdrop-filter: var(--glass-blur);
+            overflow-x: auto; max-width: 100%;
         }
         .critical-box h4 { color: var(--accent-rose); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 
@@ -604,7 +606,7 @@
 
             <div class="summary-card-grid">
                 <!-- Executive Overview -->
-                <div class="summary-info-card">
+                <div class="summary-info-card" style="grid-column: 1 / -1;">
                     <h4>ภาพรวม (Executive Overview)</h4>
                     <ul>
                         <li><b>ประสิทธิภาพเชิงลึก</b>: คะแนนรวม 50% มาจากความสำเร็จใน <b>Phase Q2 (55%)</b> เป็นหลัก ในขณะที่งานค้างเก่า <b>Phase Q1 (27%)</b> เป็นตัวฉุดคะแนนภาพรวม</li>
@@ -614,43 +616,336 @@
                 </div>
 
                 <!-- Team Ranking -->
-                <div class="summary-info-card">
-                    <h4>ความคืบหน้าแยกตามทีม (Ranking)</h4>
-                    <div class="ranking-item gold">
-                        <div class="rank-header">
-                            <span class="rank-name">🥇 อันดับ 1: ทีม HO</span>
-                            <span class="rank-val" style="font-size: 1.1rem;">ภาพรวม 42%</span>
-                        </div>
-                        <div style="display: flex; gap: 15px; margin-top: 8px; font-size: 0.8rem;">
-                            <div style="background: rgba(244,63,94,0.15); color: var(--accent-rose); padding: 4px 10px; border-radius: 6px;">Q1: 16%</div>
-                            <div style="background: rgba(16,185,129,0.15); color: var(--accent-emerald); padding: 4px 10px; border-radius: 6px; font-weight:bold;">Q2: 88% (Excellent)</div>
-                        </div>
-                    </div>
-                    <div class="ranking-item">
-                        <div class="rank-header">
-                            <span class="rank-name">🥈 อันดับ 2: ทีม DC</span>
-                            <span class="rank-val" style="font-size: 1.1rem;">ภาพรวม 20%</span>
-                        </div>
-                        <div style="display: flex; gap: 15px; margin-top: 8px; font-size: 0.8rem;">
-                            <div style="background: rgba(244,63,94,0.15); color: var(--accent-rose); padding: 4px 10px; border-radius: 6px;">Q1: 7%</div>
-                            <div style="background: rgba(16,185,129,0.15); color: var(--accent-emerald); padding: 4px 10px; border-radius: 6px; font-weight:bold;">Q2: 61% (High Growth)</div>
-                        </div>
-                    </div>
-                    <div class="ranking-item">
-                        <div class="rank-header">
-                            <span class="rank-name">🥉 อันดับ 3: ทีม Branch</span>
-                            <span class="rank-val" style="font-size: 1.1rem;">ภาพรวม 9%</span>
-                        </div>
-                        <div style="display: flex; gap: 15px; margin-top: 8px; font-size: 0.8rem;">
-                            <div style="background: rgba(244,63,94,0.15); color: var(--accent-rose); padding: 4px 10px; border-radius: 6px;">Q1: 3%</div>
-                            <div style="background: rgba(59,130,246,0.15); color: var(--accent-blue); padding: 4px 10px; border-radius: 6px; font-weight:bold;">Q2: 23% (Progressing)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                
+<style>
+.detailed-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.8rem; color: #fff; background: rgba(0, 0, 0, 0.2); border-radius: 8px; overflow: hidden; margin-bottom: 25px; }
+.detailed-table th { background: rgba(255, 255, 255, 0.1); padding: 8px 10px; text-align: left; font-weight: 600; font-size: 0.75rem; }
+.detailed-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.detailed-table tr:hover { background: rgba(255, 255, 255, 0.05); }
+.team-summary-box { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; flex-wrap: wrap; gap: 10px; }
+.team-stats { display: flex; gap: 10px; font-size: 0.85rem; }
+.stat-badge { padding: 4px 10px; border-radius: 6px; font-weight: bold; }
+.team-desc { font-size: 0.85rem; color: var(--text-dim); width: 100%; margin-top: 5px; }
+</style>
 
-            <!-- Critical Focus Box -->
-            <div class="critical-box">
+<style>
+.detailed-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.8rem; color: #fff; background: rgba(0, 0, 0, 0.2); border-radius: 8px; overflow: hidden; margin-bottom: 25px; }
+.detailed-table th { background: rgba(255, 255, 255, 0.1); padding: 8px 10px; text-align: left; font-weight: 600; font-size: 0.75rem; }
+.detailed-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.detailed-table tr:hover { background: rgba(255, 255, 255, 0.05); }
+.team-summary-box { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; flex-wrap: wrap; gap: 10px; }
+.team-stats { display: flex; gap: 10px; font-size: 0.85rem; }
+.stat-badge { padding: 4px 10px; border-radius: 6px; font-weight: bold; }
+.team-desc { font-size: 0.85rem; color: var(--text-dim); width: 100%; margin-top: 5px; }
+</style>
+
+<style>
+.detailed-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.8rem; color: #fff; background: rgba(0, 0, 0, 0.2); border-radius: 8px; overflow: hidden; margin-bottom: 25px; }
+.detailed-table th { background: rgba(255, 255, 255, 0.1); padding: 8px 10px; text-align: left; font-weight: 600; font-size: 0.75rem; }
+.detailed-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.detailed-table tr:hover { background: rgba(255, 255, 255, 0.05); }
+.team-summary-box { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; flex-wrap: wrap; gap: 10px; }
+.team-stats { display: flex; gap: 10px; font-size: 0.85rem; }
+.stat-badge { padding: 4px 10px; border-radius: 6px; font-weight: bold; }
+.team-desc { font-size: 0.85rem; color: var(--text-dim); width: 100%; margin-top: 5px; }
+</style>
+<div class="summary-info-card" style="grid-column: 1 / -1;">
+    <h4 style="margin-bottom: 20px; font-size: 1.2rem;">📊 สรุปความคืบหน้าและข้อมูลเจาะลึกรายทีม (Team Performance & Deep Dive)</h4>
+
+    <div class="ranking-item" style="border: 1px solid rgba(250,204,21,0.3);">
+        <div class="rank-header">
+            <span class="rank-name" style="font-size: 1.15rem;">🥇 ทีม HO</span>
+            <span class="rank-val" style="font-size: 1.1rem;">ภาพรวม 42%</span>
+        </div>
+        <div class="team-summary-box">
+            <div class="team-stats">
+                <div class="stat-badge" style="background: rgba(244,63,94,0.15); color: var(--accent-rose);">Q1: 16%</div>
+                <div class="stat-badge" style="background: rgba(16,185,129,0.15); color: var(--accent-emerald);">Q2: 88% (Excellent)</div>
+            </div>
+        </div>
+        <div class="team-desc">🌟 เคลียร์งานใหม่ใน Phase Q2 ได้อย่างสมบูรณ์แบบ ถือเป็นมาตรฐานผู้นำ</div>
+        
+        <table class="detailed-table">
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Phase Q1</th>
+                    <th>Phase Q2</th>
+                    <th>Overall</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr>
+                    <td>Topic 1.1 IT Asset</td>
+                    <td>-</td>
+                    <td><span style="color: #10b981; font-weight: bold;">15/15 (100%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">15/15 (100%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 1.2 GLPI agent</td>
+                    <td>-</td>
+                    <td><span style="color: #10b981; font-weight: bold;">13/13 (100%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">13/13 (100%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 2 Update OS</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">145/1,432 (10%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">6/36 (17%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">151/1,468 (10%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 3 Require Restart</td>
+                    <td><span style="color: #f59e0b; font-weight: bold;">9/15 (60%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">139/182 (76%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">148/197 (75%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 4 Antivirus</td>
+                    <td>-</td>
+                    <td><span style="color: #10b981; font-weight: bold;">64/68 (94%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">64/68 (94%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 5 Firewall</td>
+                    <td><span style="color: #10b981; font-weight: bold;">14/18 (78%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">55/58 (95%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">69/76 (91%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 6 Client join domain</td>
+                    <td><span style="color: #10b981; font-weight: bold;">9/10 (90%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">18/21 (86%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">27/31 (87%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 7 Privileged User</td>
+                    <td><span style="color: #10b981; font-weight: bold;">64/77 (83%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">486/508 (96%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">550/585 (94%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 8 Document Request</td>
+                    <td>-</td>
+                    <td><span style="color: #10b981; font-weight: bold;">3/3 (100%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">3/3 (100%)</span></td>
+                </tr>
+        
+                <tr style="background: rgba(255, 255, 255, 0.1); border-top: 2px solid rgba(255, 255, 255, 0.2);">
+                    <td style="font-weight: 800; font-size: 0.85rem;">Grand Total (ผลรวม)</td>
+                    <td style="font-weight: 800; font-size: 0.85rem;"><span style="color: #f43f5e; font-weight: bold;">241/1,552 (16%)</span></td>
+                    <td style="font-weight: 800; font-size: 0.85rem;"><span style="color: #10b981; font-weight: bold;">799/904 (88%)</span></td>
+                    <td style="font-weight: 800; font-size: 0.85rem;"><span style="color: #f59e0b; font-weight: bold;">1,040/2,456 (42%)</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="ranking-item" style="">
+        <div class="rank-header">
+            <span class="rank-name" style="font-size: 1.15rem;">🥈 ทีม DC</span>
+            <span class="rank-val" style="font-size: 1.1rem;">ภาพรวม 22%</span>
+        </div>
+        <div class="team-summary-box">
+            <div class="team-stats">
+                <div class="stat-badge" style="background: rgba(244,63,94,0.15); color: var(--accent-rose);">Q1: 9%</div>
+                <div class="stat-badge" style="background: rgba(16,185,129,0.15); color: var(--accent-emerald);">Q2: 63% (High Growth)</div>
+            </div>
+        </div>
+        <div class="team-desc">🚀 มีอัตราการเติบโตแบบก้าวกระโดด สามารถรับมือกับเฟส Q2 ได้ดีมาก</div>
+        
+        <table class="detailed-table">
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Phase Q1</th>
+                    <th>Phase Q2</th>
+                    <th>Overall</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr>
+                    <td>Topic 1.1 IT Asset</td>
+                    <td>-</td>
+                    <td><span style="color: #f59e0b; font-weight: bold;">23/31 (74%)</span></td>
+                    <td><span style="color: #f59e0b; font-weight: bold;">23/31 (74%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 1.2 GLPI agent</td>
+                    <td>-</td>
+                    <td><span style="color: #f59e0b; font-weight: bold;">2/5 (40%)</span></td>
+                    <td><span style="color: #f59e0b; font-weight: bold;">2/5 (40%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 2 Update OS</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">27/591 (5%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">1/8 (12%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">28/599 (5%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 3 Require Restart</td>
+                    <td><span style="color: #10b981; font-weight: bold;">1/1 (100%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">34/35 (97%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">35/36 (97%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 4 Antivirus</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">2/6 (33%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">23/27 (85%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">25/33 (76%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 5 Firewall</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">4/21 (19%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">8/22 (36%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">12/43 (28%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 6 Client join domain</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">0/2 (0%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">0/1 (0%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">0/3 (0%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 7 Privileged User</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">35/128 (27%)</span></td>
+                    <td><span style="color: #f59e0b; font-weight: bold;">56/107 (52%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">91/235 (39%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 8 Document Request</td>
+                    <td>-</td>
+                    <td><span style="color: #10b981; font-weight: bold;">3/3 (100%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">3/3 (100%)</span></td>
+                </tr>
+        
+                <tr style="background: rgba(255, 255, 255, 0.1); border-top: 2px solid rgba(255, 255, 255, 0.2);">
+                    <td style="font-weight: 800; font-size: 0.85rem;">Grand Total (ผลรวม)</td>
+                    <td style="font-weight: 800; font-size: 0.85rem;"><span style="color: #f43f5e; font-weight: bold;">69/749 (9%)</span></td>
+                    <td style="font-weight: 800; font-size: 0.85rem;"><span style="color: #f59e0b; font-weight: bold;">150/239 (63%)</span></td>
+                    <td style="font-weight: 800; font-size: 0.85rem;"><span style="color: #f43f5e; font-weight: bold;">219/988 (22%)</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="ranking-item" style="">
+        <div class="rank-header">
+            <span class="rank-name" style="font-size: 1.15rem;">🥉 ทีม Branch</span>
+            <span class="rank-val" style="font-size: 1.1rem;">ภาพรวม 9%</span>
+        </div>
+        <div class="team-summary-box">
+            <div class="team-stats">
+                <div class="stat-badge" style="background: rgba(244,63,94,0.15); color: var(--accent-rose);">Q1: 3%</div>
+                <div class="stat-badge" style="background: rgba(59,130,246,0.15); color: var(--accent-blue);">Q2: 23% (Progressing)</div>
+            </div>
+        </div>
+        <div class="team-desc">📈 แม้มีปริมาณงานหน้าสาขาจำนวนมหาศาล แต่เริ่มเห็นพัฒนาการในเฟส Q2</div>
+        
+        <table class="detailed-table">
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Phase Q1</th>
+                    <th>Phase Q2</th>
+                    <th>Overall</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr>
+                    <td>Topic 1.1 IT Asset</td>
+                    <td><span style="color: #10b981; font-weight: bold;">10/10 (100%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">140/145 (97%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">150/155 (97%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 1.2 GLPI agent</td>
+                    <td>-</td>
+                    <td><span style="color: #10b981; font-weight: bold;">24/31 (77%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">24/31 (77%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 2 Update OS</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">68/3,578 (2%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">3/60 (5%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">71/3,638 (2%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 3 Require Restart</td>
+                    <td><span style="color: #10b981; font-weight: bold;">3/4 (75%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">82/86 (95%)</span></td>
+                    <td><span style="color: #10b981; font-weight: bold;">85/90 (94%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 4 Antivirus</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">21/117 (18%)</span></td>
+                    <td><span style="color: #f59e0b; font-weight: bold;">45/71 (63%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">66/188 (35%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 5 Firewall</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">3/320 (1%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">43/739 (6%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">46/1,059 (4%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 6 Client join domain</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">1/21 (5%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">2/145 (1%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">3/166 (2%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 7 Privileged User</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">11/237 (5%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">94/625 (15%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">105/862 (12%)</span></td>
+                </tr>
+        
+                <tr>
+                    <td>Topic 8 Document Request</td>
+                    <td>-</td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">0/3 (0%)</span></td>
+                    <td><span style="color: #f43f5e; font-weight: bold;">0/3 (0%)</span></td>
+                </tr>
+        
+                <tr style="background: rgba(255, 255, 255, 0.1); border-top: 2px solid rgba(255, 255, 255, 0.2);">
+                    <td style="font-weight: 800; font-size: 0.85rem;">Grand Total (ผลรวม)</td>
+                    <td style="font-weight: 800; font-size: 0.85rem;"><span style="color: #f43f5e; font-weight: bold;">117/4,287 (3%)</span></td>
+                    <td style="font-weight: 800; font-size: 0.85rem;"><span style="color: #f43f5e; font-weight: bold;">433/1,905 (23%)</span></td>
+                    <td style="font-weight: 800; font-size: 0.85rem;"><span style="color: #f43f5e; font-weight: bold;">550/6,192 (9%)</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div> <!-- End of Detailed Tables summary-info-card -->
+
+    <!-- Critical Focus Box -->
+    <div class="critical-box" style="grid-column: 1 / -1;">
                 <h4>⚠️ หัวข้อที่ต้องเร่งมือ (Critical Focus)</h4>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div style="font-size: 0.9rem; color: #fff;">
@@ -661,7 +956,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+        </div> <!-- End summary-report-section -->
 
         <footer>
             <p>EIA Performance Report Dashboard © 2026 • Endpoint Management Team</p>
