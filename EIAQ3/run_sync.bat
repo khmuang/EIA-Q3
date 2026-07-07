@@ -16,6 +16,24 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b
 )
 
+echo Generating Static Team Detailed Tables...
+python gen_tables.py
+if %ERRORLEVEL% NEQ 0 (
+    echo [ERROR] Table Generation Failed.
+    pause
+    exit /b
+)
+
+echo Injecting Tables into Root Dashboard...
+cd ..
+python sync.py
+if %ERRORLEVEL% NEQ 0 (
+    echo [ERROR] Sync Failed.
+    pause
+    exit /b
+)
+cd EIAQ3
+
 :: [2/4] Mirror to Root for Deployment
 echo [2/4] Mirroring UI to Project Root...
 copy /Y "index.html" "..\index.html"
