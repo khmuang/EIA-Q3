@@ -4,7 +4,7 @@ import json
 import datetime
 
 # --- CONFIGURATION (SharePoint Integration) ---
-SHAREPOINT_ROOT = r"D:\Users\Djmanny\Central Group\RIS Endpoint support - Q2"
+SHAREPOINT_ROOT = r"D:\Users\Djmanny\Central Group\RIS Endpoint support - Q3"
 
 # Auto-detect location for output
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -23,7 +23,7 @@ TOPICS_CONFIG = {
     "1.1 IT Asset Management.xlsx": {"id": "1.1", "subfolder": "1.1 IT Asset Management", "status_col": "Asset update status Y/N", "team_col": "Groups"},
     "1.2 Install GLPI agent.xlsx": {"id": "1.2", "subfolder": "1.2 Install GLPI agent", "status_col": "GLPI setup status Y/N", "team_col": "Serviced By"},
     "2. Update OS.xlsx": {"id": "2", "subfolder": "2. Update OS", "status_col": "OS update status Y/N", "team_col": "Serviced By"},
-    "3. Require Restart.xlsx": {"id": "3", "subfolder": "3. Require Restart", "status_col": "Restart update Y/N", "team_col": "Serviced By"},
+    "3. Device Require Patch Update.xlsx": {"id": "3", "subfolder": "3. Patch Update", "status_col": "Patch status Y/N", "team_col": "Serviced By"},
     "4. Antivirus Installation.xlsx": {"id": "4", "subfolder": "4. Antivirus Installation", "status_col": "AV update Y/N", "team_col": "Serviced By"},
     "5. Built-in Firewall Enablement.xlsx": {"id": "5", "subfolder": "5. Built-in Firewall Enablement", "status_col": "Firewall update Y/N", "team_col": "Serviced By"},
     "6. Client join domain.xlsx": {"id": "6", "subfolder": "6. Client join domain", "status_col": "Join domain update Y/N", "team_col": "Serviced By"},
@@ -39,12 +39,12 @@ def sync():
     for filename, mapping in TOPICS_CONFIG.items():
         file_path = os.path.join(SHAREPOINT_ROOT, mapping['subfolder'], filename)
         if not os.path.exists(file_path):
-            print(f"⚠️  Skipping missing file (SharePoint): {file_path}")
+            print(f"[WARN] Skipping missing file (SharePoint): {file_path}")
             continue
         
         try:
-            # We assume header is at row 3 (Index 2)
-            df = pd.read_excel(file_path, header=2)
+            # All Q3 files have headers at row 1 (Index 0)
+            df = pd.read_excel(file_path, header=0)
             status_col = mapping['status_col']
             team_col = mapping['team_col']
             topic_id = mapping['id']
@@ -63,11 +63,11 @@ def sync():
                 df['team_clean'] = df[team_col].fillna('Unknown').astype(str).str.strip()
                 # Clean Status
                 df['y_n'] = df[status_col].fillna('N').apply(lambda x: 'Y' if str(x).strip().upper() == 'Y' else 'N')
-                # Clean Phase (Map Q1,Q2 -> Q1)
+                # Clean Phase (Take the earliest phase, e.g. Q1,Q2 -> Q1)
                 if 'EIA Phase' in df.columns:
-                    df['phase_clean'] = df['EIA Phase'].fillna('Unknown').astype(str).str.strip().replace('Q1,Q2', 'Q1')
+                    df['phase_clean'] = df['EIA Phase'].fillna('Unknown').astype(str).str.strip().str.split(',').str[0]
                 else:
-                    df['phase_clean'] = 'Q2'
+                    df['phase_clean'] = 'Q3'
                 
                 # Grouping
                 for (team, phase), group in df.groupby(['team_clean', 'phase_clean']):
@@ -79,10 +79,9 @@ def sync():
                         "success": int((group['y_n'] == 'Y').sum())
                     }
             else:
-                print(f"❌ Error: Required columns not found in {filename}")
-
+                print(f"[ERROR] Required columns not found in {filename}")
         except Exception as e:
-            print(f"❌ Error processing {filename}: {e}")
+            print(f"[ERROR] processing {filename}: {e}")
 
     # --- SAVE TO DATA.JS ---
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
