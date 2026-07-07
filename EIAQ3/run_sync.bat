@@ -36,7 +36,6 @@ cd EIAQ3
 
 :: [2/4] Mirror to Root for Deployment
 echo [2/4] Mirroring UI to Project Root...
-copy /Y "index.html" "..\index.html"
 if not exist "..\assets" mkdir "..\assets"
 xcopy /S /Y /I "assets" "..\assets"
 copy /Y "data.js" "..\data.js"
@@ -48,7 +47,6 @@ cd ..
 git add index.html
 git add data.js
 git add assets/
-git add EIAQ3/index.html
 git add EIAQ3/update_dashboard.py
 git add EIAQ3/run_sync.bat
 git add .gitignore
