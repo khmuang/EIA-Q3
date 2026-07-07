@@ -60,7 +60,7 @@ git push origin main
 
 echo ===========================================
 echo    DASHBOARD UPDATED SUCCESSFULLY!
-echo    URL: https://khmuang.github.io/EIA-Q2/
+echo    URL: https://khmuang.github.io/EIA-Q3/
 echo ===========================================
 cd EIAQ3
 pause
