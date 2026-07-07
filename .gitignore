@@ -35,12 +35,12 @@ tests/
 !assets/
 !run_sync.bat
 !update_dashboard.py
-!EIAQ2/
-!EIAQ2/**
+!EIAQ3/
+!EIAQ3/**
 !Q2readme.md
 !README.md
 !.gitignore
 
-# Block Excel inside EIAQ2 too (redundant but safe)
-EIAQ2/*.xlsx
-EIAQ2/*.xls
+# Block Excel inside EIAQ3 too (redundant but safe)
+EIAQ3/*.xlsx
+EIAQ3/*.xls

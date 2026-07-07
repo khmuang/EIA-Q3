@@ -3,7 +3,7 @@ setlocal
 cd /d "%~dp0"
 
 echo ===========================================
-echo    EIA Q2 ULTIMATE SYNC TOOL (EIAQ2 DEV)
+echo    EIA Q2 ULTIMATE SYNC TOOL (EIAQ3 DEV)
 echo ===========================================
 
 :: [1/4] Run Data Extraction
@@ -30,9 +30,9 @@ cd ..
 git add index.html
 git add data.js
 git add assets/
-git add EIAQ2/index.html
-git add EIAQ2/update_dashboard.py
-git add EIAQ2/run_sync.bat
+git add EIAQ3/index.html
+git add EIAQ3/update_dashboard.py
+git add EIAQ3/run_sync.bat
 git add .gitignore
 
 :: [4/4] Commit and Push
@@ -44,5 +44,5 @@ echo ===========================================
 echo    DASHBOARD UPDATED SUCCESSFULLY!
 echo    URL: https://khmuang.github.io/EIA-Q2/
 echo ===========================================
-cd EIAQ2
+cd EIAQ3
 pause

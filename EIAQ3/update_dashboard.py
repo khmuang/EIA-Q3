@@ -8,16 +8,16 @@ SHAREPOINT_ROOT = r"D:\Users\Djmanny\Central Group\RIS Endpoint support - Q3"
 
 # Auto-detect location for output
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-if BASE_DIR.endswith('EIAQ2'):
+if BASE_DIR.endswith('EIAQ3'):
     PROJECT_ROOT = os.path.dirname(BASE_DIR)
 else:
     PROJECT_ROOT = BASE_DIR
 
 OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'data.js')
-ALT_OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'EIAQ2', 'data.js')
+ALT_OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'EIAQ3', 'data.js')
 
-# Ensure a copy exists in EIAQ2 as well for consistency
-ALT_OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'EIAQ2', 'data.js')
+# Ensure a copy exists in EIAQ3 as well for consistency
+ALT_OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'EIAQ3', 'data.js')
 
 TOPICS_CONFIG = {
     "1.1 IT Asset Management.xlsx": {"id": "1.1", "subfolder": "1.1 IT Asset Management", "status_col": "Asset update status Y/N", "team_col": "Groups"},
@@ -91,16 +91,16 @@ def sync():
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write(js_content)
     
-    # Also update the companion file in EIAQ2 (for local consistency)
+    # Also update the companion file in EIAQ3 (for local consistency)
     try:
         with open(ALT_OUTPUT_FILE, 'w', encoding='utf-8') as f:
             f.write(js_content)
     except Exception as e:
-        print(f"[WARNING] Note: Could not update secondary data.js in EIAQ2: {e}")
+        print(f"[WARNING] Note: Could not update secondary data.js in EIAQ3: {e}")
 
     print(f"[SUCCESS] Sync complete!")
     print(f"ROOT data.js: {OUTPUT_FILE}")
-    print(f"EIAQ2 data.js: {ALT_OUTPUT_FILE}")
+    print(f"EIAQ3 data.js: {ALT_OUTPUT_FILE}")
     print("\n--- NEXT STEPS FOR GITHUB ---")
     print(f"1. git add data.js")
     print(f"2. git commit -m \"Update dashboard data - {now}\"")
