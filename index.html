@@ -1180,10 +1180,10 @@
                         phaseAggregates["ALL"].s += phases['Q3'].success; phaseAggregates["ALL"].t += phases['Q3'].total;
                     }
                 });
-                const q1_pct = q1_t > 0 ? Math.round((q1_s / q1_t) * 100) : 0;
                 const q2_pct = q2_t > 0 ? Math.round((q2_s / q2_t) * 100) : 0;
-                const delta = q2_pct - q1_pct;
-                trendData[tid] = { delta, q1_pct, q2_pct };
+                const q3_pct = q3_t > 0 ? Math.round((q3_s / q3_t) * 100) : 0;
+                const delta = q3_pct - q2_pct;
+                trendData[tid] = { delta, q2_pct, q3_pct };
             });
 
             // Update Phase Tabs with Percentages
