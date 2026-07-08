@@ -22,7 +22,7 @@ def get_status_class(pct):
     if pct >= 40: return 'color: #f59e0b; font-weight: bold;'
     return 'color: #f43f5e; font-weight: bold;'
 
-html_tables = """
+html_tables = """<div class="summary-info-card" style="grid-column: 1 / -1;">
 <style>
 .detailed-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.8rem; color: #fff; background: rgba(0, 0, 0, 0.2); border-radius: 8px; overflow: hidden; margin-bottom: 25px; }
 .detailed-table th { background: rgba(255, 255, 255, 0.1); padding: 8px 10px; text-align: left; font-weight: 600; font-size: 0.75rem; }
@@ -35,7 +35,6 @@ html_tables = """
 .toggle-q1-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; margin-left: 10px; transition: 0.2s; }
 .toggle-q1-btn:hover { background: rgba(255,255,255,0.2); }
 </style>
-<div class="summary-info-card" style="grid-column: 1 / -1;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h4 style="font-size: 1.2rem; margin: 0;">📊 สรุปความคืบหน้าและข้อมูลเจาะลึกรายทีม (Team Performance & Deep Dive)</h4>
         <button class="toggle-q1-btn" onclick="toggleQ1()">👁️ Show/Hide Q1</button>
@@ -52,13 +51,15 @@ html_tables = """
 """
 
 def get_bg_color(pct):
-    if pct >= 80: return 'rgba(16,185,129,0.15)'
-    elif pct >= 40: return 'rgba(59,130,246,0.15)'
+    if pct >= 90: return 'rgba(16,185,129,0.15)'
+    elif pct >= 70: return 'rgba(59,130,246,0.15)'
+    elif pct >= 50: return 'rgba(245,158,11,0.15)'
     else: return 'rgba(244,63,94,0.15)'
 
 def get_text_color(pct):
-    if pct >= 80: return 'var(--accent-emerald)'
-    elif pct >= 40: return 'var(--accent-blue)'
+    if pct >= 90: return 'var(--accent-emerald)'
+    elif pct >= 70: return 'var(--accent-blue)'
+    elif pct >= 50: return 'var(--accent-amber)'
     else: return 'var(--accent-rose)'
 
 for team in ['HO', 'DC', 'Branch']:
