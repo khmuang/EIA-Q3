@@ -35,11 +35,13 @@ def sync():
     print(f"[START] Starting Dashboard Data Sync...")
     print(f"[PATH] Looking for Excel files in SharePoint: {SHAREPOINT_ROOT}")
     multi_matrix = {}
+    has_errors = False
     
     for filename, mapping in TOPICS_CONFIG.items():
         file_path = os.path.join(SHAREPOINT_ROOT, mapping['subfolder'], filename)
         if not os.path.exists(file_path):
-            print(f"[WARN] Skipping missing file (SharePoint): {file_path}")
+            print(f"[ERROR] Missing file (SharePoint): {file_path}")
+            has_errors = True
             continue
         
         try:
@@ -80,8 +82,15 @@ def sync():
                     }
             else:
                 print(f"[ERROR] Required columns not found in {filename}")
+                has_errors = True
         except Exception as e:
             print(f"[ERROR] processing {filename}: {e}")
+            has_errors = True
+
+    if has_errors:
+        print("[FAIL] Dashboard Data Sync Failed due to errors. Output files were NOT updated.")
+        import sys
+        sys.exit(1)
 
     # --- SAVE TO DATA.JS ---
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
