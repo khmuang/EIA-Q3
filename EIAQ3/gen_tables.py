@@ -203,12 +203,8 @@ for team in ['HO', 'DC', 'Branch']:
 
 html_tables += '</div> <!-- End of Detailed Tables summary-info-card -->'
 
-pattern = re.compile(r'<div class="summary-info-card" style="grid-column: 1 / -1;">\s*<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">\s*<h4 style="font-size: 1.2rem; margin: 0;">📊 สรุปความคืบหน้าและข้อมูลเจาะลึกรายทีม.*?<!-- End of Detailed Tables summary-info-card -->', re.DOTALL)
+pattern = re.compile(r'<div class="summary-info-card" style="grid-column: 1 / -1;">.*?<!-- End of Detailed Tables summary-info-card -->', re.DOTALL)
 new_html = pattern.sub(html_tables, html_content)
-if html_tables not in new_html:
-    # Fallback if old header style is present
-    pattern_old = re.compile(r'<div class="summary-info-card" style="grid-column: 1 / -1;">\s*<h4 style="margin-bottom: 20px; font-size: 1.2rem;">📊 สรุปความคืบหน้าและข้อมูลเจาะลึกรายทีม.*?<!-- End of Detailed Tables summary-info-card -->', re.DOTALL)
-    new_html = pattern_old.sub(html_tables, html_content)
 
 with open('index_preview_detailed.html', 'w', encoding='utf-8') as f:
     f.write(new_html)
