@@ -1498,6 +1498,39 @@
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // Auto-apply 'past' class to timeline items whose dates have passed
+        function updateTimelineProgress() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                const timeEl = item.querySelector('time');
+                if (timeEl) {
+                    const dateStr = timeEl.innerText.trim();
+                    const parts = dateStr.split('-');
+                    if (parts.length === 3) {
+                        const day = parseInt(parts[0]);
+                        const monthStr = parts[1];
+                        const year = parseInt(parts[2]) + 2000;
+                        const months = {
+                            'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+                            'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+                        };
+                        const month = months[monthStr];
+                        if (month !== undefined) {
+                            const eventDate = new Date(year, month, day);
+                            if (eventDate < today) {
+                                item.classList.add('past');
+                            } else {
+                                item.classList.remove('past');
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        updateTimelineProgress();
     </script>
 </body>
 </html>
