@@ -48,6 +48,7 @@ git add index.html
 git add data.js
 git add assets/
 git add EIAQ3/update_dashboard.py
+git add EIAQ3/gen_tables.py
 git add EIAQ3/run_sync.bat
 git add .gitignore
 

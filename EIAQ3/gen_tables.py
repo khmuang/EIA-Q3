@@ -62,6 +62,11 @@ def get_text_color(pct):
     elif pct >= 50: return 'var(--accent-amber)'
     else: return 'var(--accent-rose)'
 
+def get_chart_color(pct):
+    if pct >= 75: return 'var(--accent-emerald)', 'rgba(16,185,129,0.5)'
+    elif pct >= 40: return 'var(--accent-amber)', 'rgba(245,158,11,0.5)'
+    return 'var(--accent-rose)', 'rgba(244,63,94,0.5)'
+
 for team in ['HO', 'DC', 'Branch']:
     # 1. First Pass: Calculate Totals
     team_q1_t, team_q1_s = 0, 0
@@ -139,9 +144,24 @@ for team in ['HO', 'DC', 'Branch']:
         all_pct_row = round((all_s/all_t)*100) if all_t > 0 else 0
         all_str = f'<span style="{get_status_class(all_pct_row)}">{all_s:,}/{all_t:,} ({all_pct_row}%)</span>' if all_t > 0 else '-'
         
+        if all_t > 0:
+            color, shadow = get_chart_color(all_pct_row)
+            topic_html = f"""<div style="margin-bottom: 6px; font-weight: bold; color: #fff;">{topic_names[tid]}</div>
+                            <div style="width: 100%; max-width: 180px; margin-top: 5px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 3px;">
+                                    <span style="color: {color}; font-weight: bold;">{all_pct_row}%</span>
+                                    <span style="color: #9ca3af;">{all_s:,} / {all_t:,}</span>
+                                </div>
+                                <div style="height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; position: relative;">
+                                    <div style="height: 100%; background: {color}; width: {all_pct_row}%; border-radius: 3px; box-shadow: 0 0 5px {shadow};"></div>
+                                </div>
+                            </div>"""
+        else:
+            topic_html = f"""<div style="font-weight: bold; color: #fff;">{topic_names[tid]}</div>"""
+
         html_tables += f"""
                 <tr>
-                    <td>Topic {topic_names[tid]}</td>
+                    <td>{topic_html}</td>
                     <td class="col-q1" style="display:none;">{q1_str}</td>
                     <td>{q2_str}</td>
                     <td>{q3_str}</td>
@@ -174,9 +194,24 @@ for team in ['HO', 'DC', 'Branch']:
     team_q3_n = team_q3_t - team_q3_s
     team_all_n = team_all_t - team_all_s
     
+    if team_all_t > 0:
+        gt_color, gt_shadow = get_chart_color(team_all_pct)
+        gt_html = f"""<div style="margin-bottom: 6px; font-weight: bold; color: #fff;">Grand Total (ผลรวม)</div>
+                        <div style="width: 100%; max-width: 180px; margin-top: 5px;">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; margin-bottom: 3px;">
+                                <span style="color: {gt_color}; font-weight: bold;">{team_all_pct}%</span>
+                                <span style="color: #9ca3af;">{team_all_s:,} / {team_all_t:,}</span>
+                            </div>
+                            <div style="height: 5px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; position: relative;">
+                                <div style="height: 100%; background: {gt_color}; width: {team_all_pct}%; border-radius: 3px; box-shadow: 0 0 5px {gt_shadow};"></div>
+                            </div>
+                        </div>"""
+    else:
+        gt_html = f"""<div style="font-weight: bold; color: #fff;">Grand Total (ผลรวม)</div>"""
+        
     html_tables += f"""
                 <tr style="background: rgba(255, 255, 255, 0.1); border-top: 2px solid rgba(255, 255, 255, 0.2);">
-                    <td style="font-weight: 800; font-size: 0.85rem;">Grand Total (ผลรวม)</td>
+                    <td style="font-weight: 800; font-size: 0.85rem;">{gt_html}</td>
                     <td class="col-q1" style="font-weight: 800; font-size: 0.85rem; display:none;">{team_q1_str}</td>
                     <td style="font-weight: 800; font-size: 0.85rem;">{team_q2_str}</td>
                     <td style="font-weight: 800; font-size: 0.85rem;">{team_q3_str}</td>
@@ -201,7 +236,83 @@ for team in ['HO', 'DC', 'Branch']:
     </div>
     """
 
-html_tables += '</div> <!-- End of Detailed Tables summary-info-card -->'
+# ====================================================
+# BU MATRIX GENERATION
+# ====================================================
+bu_html = """
+<div class="summary-info-card" style="grid-column: 1 / -1; margin-top: 30px; border: 1px dashed var(--accent-blue);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h4 style="font-size: 1.2rem; margin: 0; color: var(--accent-blue);">🏢 สรุปผลตาม Business Unit (BU Matrix) แยกตามทีม</h4>
+    </div>
+"""
+
+for team in ['HO', 'DC', 'Branch']:
+    bu_data = {}
+    for tid in topic_order:
+        phases = data.get(team, {}).get(tid, {})
+        for phase, metrics in phases.items():
+            if phase in ['Q1', 'Q2', 'Q3']:
+                bu_breakdown = metrics.get('bu_breakdown', {})
+                for bu, nums in bu_breakdown.items():
+                    if bu not in bu_data: bu_data[bu] = {}
+                    if tid not in bu_data[bu]: bu_data[bu][tid] = {'success': 0, 'total': 0}
+                    bu_data[bu][tid]['success'] += nums['success']
+                    bu_data[bu][tid]['total'] += nums['total']
+                    
+    if not bu_data: continue
+    
+    medal = '🥇' if team == 'HO' else ('🥈' if team == 'DC' else '🥉')
+    
+    bu_html += f"""
+    <div class="ranking-item" style="{'border: 1px solid rgba(250,204,21,0.3);' if team=='HO' else ''} margin-bottom: 20px;">
+        <div class="rank-header">
+            <span class="rank-name" style="font-size: 1.15rem;">{medal} ทีม {team} - BU Breakdown</span>
+        </div>
+        <div style="overflow-x: auto;">
+            <table class="detailed-table" style="min-width: 800px; text-align: center;">
+                <thead>
+                    <tr>
+                        <th style="text-align: left; position: sticky; left: 0; background: #1e293b; z-index: 10;">BU Name</th>
+    """
+    for tid in topic_order:
+        topic_short_name = topic_names[tid].split(' ', 1)[1] if ' ' in topic_names[tid] else topic_names[tid]
+        bu_html += f"<th>Topic {tid}<br><span style='font-size:0.65rem; color:#9ca3af;'>{topic_short_name}</span></th>"
+    bu_html += "<th>Overall<br><span style='font-size:0.65rem; color:#9ca3af;'>Total</span></th></tr></thead><tbody>"
+    
+    sorted_bus = sorted([b for b in bu_data.keys() if b != 'Unknown' and b != 'nan'])
+    if 'Unknown' in bu_data: sorted_bus.append('Unknown')
+    
+    for bu in sorted_bus:
+        bu_html += f"<tr><td style='text-align: left; font-weight: bold; position: sticky; left: 0; background: #1e293b;'>{bu}</td>"
+        bu_all_s = 0
+        bu_all_t = 0
+        for tid in topic_order:
+            metrics = bu_data[bu].get(tid, {'success': 0, 'total': 0})
+            s, t = metrics['success'], metrics['total']
+            bu_all_s += s
+            bu_all_t += t
+            if t > 0:
+                pct = round((s/t)*100)
+                color, shadow = get_chart_color(pct)
+                bu_html += f"<td><span style='color: {color}; font-weight: bold;'>{pct}%</span><br><span style='font-size: 0.65rem; color: #9ca3af;'>{s:,}/{t:,}</span></td>"
+            else:
+                bu_html += "<td><span style='color: #4b5563;'>-</span></td>"
+                
+        # Overall column
+        if bu_all_t > 0:
+            pct = round((bu_all_s/bu_all_t)*100)
+            color, shadow = get_chart_color(pct)
+            bu_html += f"<td><span style='color: {color}; font-weight: bold;'>{pct}%</span><br><span style='font-size: 0.65rem; color: #9ca3af;'>{bu_all_s:,}/{bu_all_t:,}</span></td>"
+        else:
+            bu_html += "<td><span style='color: #4b5563;'>-</span></td>"
+        bu_html += "</tr>"
+        
+    bu_html += "</tbody></table></div></div>"
+
+bu_html += "</div><!-- End of BU Matrix -->"
+html_tables += bu_html
+
+html_tables += "\n</div> <!-- End of Detailed Tables summary-info-card -->"
 
 pattern = re.compile(r'<div class="summary-info-card" style="grid-column: 1 / -1;">.*?<!-- End of Detailed Tables summary-info-card -->', re.DOTALL)
 new_html = pattern.sub(html_tables, html_content)

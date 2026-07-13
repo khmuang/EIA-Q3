@@ -51,14 +51,15 @@ def sync():
             team_col = mapping['team_col']
             topic_id = mapping['id']
 
-            # Dynamic column finding if exact name doesn't match
-            if status_col not in df.columns:
-                found = [c for c in df.columns if status_col.split()[0].lower() in str(c).lower()]
-                status_col = found[0] if found else None
-                
-            if team_col not in df.columns:
-                found = [c for c in df.columns if "service" in str(c).lower() or "group" in str(c).lower()]
-                team_col = found[0] if found else None
+            # Find BU Column
+            bu_col = None
+            if 'BU' in df.columns:
+                bu_col = 'BU'
+            elif 'Plugins - BU, Company - BU' in df.columns:
+                bu_col = 'Plugins - BU, Company - BU'
+            else:
+                found_bu = [c for c in df.columns if 'BU' in str(c).upper() and 'BUILD' not in str(c).upper()]
+                if found_bu: bu_col = found_bu[0]
 
             if status_col and team_col:
                 # Clean Team Name
@@ -71,14 +72,28 @@ def sync():
                 else:
                     df['phase_clean'] = 'Q3'
                 
+                # Clean BU
+                if bu_col:
+                    df['bu_clean'] = df[bu_col].fillna('Unknown').astype(str).str.strip()
+                else:
+                    df['bu_clean'] = 'Unknown'
+                
                 # Grouping
                 for (team, phase), group in df.groupby(['team_clean', 'phase_clean']):
                     if team not in multi_matrix: multi_matrix[team] = {}
                     if topic_id not in multi_matrix[team]: multi_matrix[team][topic_id] = {}
                     
+                    bu_breakdown = {}
+                    for bu, bu_group in group.groupby('bu_clean'):
+                        bu_breakdown[bu] = {
+                            "total": int(len(bu_group)),
+                            "success": int((bu_group['y_n'] == 'Y').sum())
+                        }
+                    
                     multi_matrix[team][topic_id][phase] = {
                         "total": int(len(group)),
-                        "success": int((group['y_n'] == 'Y').sum())
+                        "success": int((group['y_n'] == 'Y').sum()),
+                        "bu_breakdown": bu_breakdown
                     }
             else:
                 print(f"[ERROR] Required columns not found in {filename}")
