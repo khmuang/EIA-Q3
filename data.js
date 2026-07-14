@@ -1,4 +1,4 @@
-// Automatically generated at 2026-07-13 16:15:23
+// Automatically generated at 2026-07-14 09:30:04
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -769,7 +769,7 @@ const DASHBOARD_DATA = {
         },
         "3": {
             "Q3": {
-                "total": 280,
+                "total": 279,
                 "success": 24,
                 "bu_breakdown": {
                     "CDG": {
@@ -783,10 +783,6 @@ const DASHBOARD_DATA = {
                     "CMG": {
                         "total": 37,
                         "success": 1
-                    },
-                    "FAST": {
-                        "total": 1,
-                        "success": 0
                     },
                     "PWB": {
                         "total": 27,
@@ -1157,7 +1153,7 @@ const DASHBOARD_DATA = {
         },
         "3": {
             "Q3": {
-                "total": 902,
+                "total": 903,
                 "success": 263,
                 "bu_breakdown": {
                     "Audit": {
@@ -1209,7 +1205,7 @@ const DASHBOARD_DATA = {
                         "success": 7
                     },
                     "FAST": {
-                        "total": 163,
+                        "total": 164,
                         "success": 73
                     },
                     "MJT": {
@@ -1246,7 +1242,7 @@ const DASHBOARD_DATA = {
         "4": {
             "Q3": {
                 "total": 90,
-                "success": 31,
+                "success": 36,
                 "bu_breakdown": {
                     "Audit": {
                         "total": 1,
@@ -1294,7 +1290,7 @@ const DASHBOARD_DATA = {
                     },
                     "RIS": {
                         "total": 19,
-                        "success": 7
+                        "success": 12
                     },
                     "SCM": {
                         "total": 2,
@@ -1609,4 +1605,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-07-13 16:15:23';
+const LAST_UPDATED = '2026-07-14 09:30:04';
