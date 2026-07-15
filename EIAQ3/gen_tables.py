@@ -97,7 +97,10 @@ for team in ['HO', 'DC', 'Branch']:
     <div class="ranking-item" style="{'border: 1px solid rgba(250,204,21,0.3);' if team=='HO' else ''}">
         <div class="rank-header">
             <span class="rank-name" style="font-size: 1.15rem;">{medal} ทีม {team}</span>
-            <span class="rank-val" style="font-size: 1.1rem;">ภาพรวม {all_pct}%</span>
+            <span class="rank-val" style="font-size: 1.1rem;">
+                ภาพรวม {all_pct}% 
+                <span style="font-size: 0.85rem; color: #9ca3af; font-weight: normal; margin-left: 5px;">({team_all_s:,} / {team_all_t:,})</span>
+            </span>
         </div>
         <div class="team-summary-box">
             <div class="team-stats">
