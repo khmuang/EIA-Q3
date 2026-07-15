@@ -1519,7 +1519,7 @@
                 
                 if (t_sum > 0) {
                     const avg = Math.round((s_sum / t_sum) * 100);
-                    teamRanks.push({ name: team, score: avg });
+                    teamRanks.push({ name: team, score: avg, s_sum: s_sum, t_sum: t_sum });
                 }
             });
 
@@ -1528,15 +1528,15 @@
             // Update Podium UI
             if (teamRanks[0]) {
                 document.getElementById('rank-1-name').innerText = teamRanks[0].name;
-                document.getElementById('rank-1-score').innerText = teamRanks[0].score + '%';
+                document.getElementById('rank-1-score').innerHTML = `${teamRanks[0].score}% <div style="font-size:0.45em; color:rgba(255,255,255,0.7); font-weight:normal; letter-spacing:1px; margin-top:2px;">(${teamRanks[0].s_sum.toLocaleString()} / ${teamRanks[0].t_sum.toLocaleString()})</div>`;
             }
             if (teamRanks[1]) {
                 document.getElementById('rank-2-name').innerText = teamRanks[1].name;
-                document.getElementById('rank-2-score').innerText = teamRanks[1].score + '%';
+                document.getElementById('rank-2-score').innerHTML = `${teamRanks[1].score}% <div style="font-size:0.45em; color:rgba(255,255,255,0.7); font-weight:normal; letter-spacing:1px; margin-top:2px;">(${teamRanks[1].s_sum.toLocaleString()} / ${teamRanks[1].t_sum.toLocaleString()})</div>`;
             }
             if (teamRanks[2]) {
                 document.getElementById('rank-3-name').innerText = teamRanks[2].name;
-                document.getElementById('rank-3-score').innerText = teamRanks[2].score + '%';
+                document.getElementById('rank-3-score').innerHTML = `${teamRanks[2].score}% <div style="font-size:0.45em; color:rgba(255,255,255,0.7); font-weight:normal; letter-spacing:1px; margin-top:2px;">(${teamRanks[2].s_sum.toLocaleString()} / ${teamRanks[2].t_sum.toLocaleString()})</div>`;
             }
 
             // Update Topic List
