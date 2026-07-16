@@ -1,4 +1,4 @@
-// Automatically generated at 2026-07-16 09:30:07
+// Automatically generated at 2026-07-16 17:24:15
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -70,7 +70,7 @@ const DASHBOARD_DATA = {
         "1.2": {
             "Q2": {
                 "total": 5,
-                "success": 0,
+                "success": 1,
                 "bu_breakdown": {
                     "B2S": {
                         "total": 1,
@@ -78,7 +78,7 @@ const DASHBOARD_DATA = {
                     },
                     "CDG": {
                         "total": 2,
-                        "success": 0
+                        "success": 1
                     },
                     "CFR": {
                         "total": 2,
@@ -88,11 +88,11 @@ const DASHBOARD_DATA = {
             },
             "Q3": {
                 "total": 58,
-                "success": 0,
+                "success": 1,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 2,
-                        "success": 0
+                        "success": 1
                     },
                     "CFR": {
                         "total": 1,
@@ -1605,4 +1605,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-07-16 09:30:07';
+const LAST_UPDATED = '2026-07-16 17:24:15';
