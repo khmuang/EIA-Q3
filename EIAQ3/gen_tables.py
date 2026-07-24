@@ -18,8 +18,9 @@ topic_names = {
 }
 
 def get_status_class(pct):
-    if pct >= 75: return 'color: #10b981; font-weight: bold;'
-    if pct >= 40: return 'color: #f59e0b; font-weight: bold;'
+    if pct >= 85: return 'color: #10b981; font-weight: bold;'
+    if pct >= 65: return 'color: #3b82f6; font-weight: bold;'
+    if pct >= 45: return 'color: #f59e0b; font-weight: bold;'
     return 'color: #f43f5e; font-weight: bold;'
 
 html_tables = """<div class="summary-info-card" style="grid-column: 1 / -1;">
@@ -51,20 +52,21 @@ html_tables = """<div class="summary-info-card" style="grid-column: 1 / -1;">
 """
 
 def get_bg_color(pct):
-    if pct >= 90: return 'rgba(16,185,129,0.15)'
-    elif pct >= 70: return 'rgba(59,130,246,0.15)'
-    elif pct >= 50: return 'rgba(245,158,11,0.15)'
+    if pct >= 85: return 'rgba(16,185,129,0.15)'
+    elif pct >= 65: return 'rgba(59,130,246,0.15)'
+    elif pct >= 45: return 'rgba(245,158,11,0.15)'
     else: return 'rgba(244,63,94,0.15)'
 
 def get_text_color(pct):
-    if pct >= 90: return 'var(--accent-emerald)'
-    elif pct >= 70: return 'var(--accent-blue)'
-    elif pct >= 50: return 'var(--accent-amber)'
+    if pct >= 85: return 'var(--accent-emerald)'
+    elif pct >= 65: return 'var(--accent-blue)'
+    elif pct >= 45: return 'var(--accent-amber)'
     else: return 'var(--accent-rose)'
 
 def get_chart_color(pct):
-    if pct >= 75: return 'var(--accent-emerald)', 'rgba(16,185,129,0.5)'
-    elif pct >= 40: return 'var(--accent-amber)', 'rgba(245,158,11,0.5)'
+    if pct >= 85: return 'var(--accent-emerald)', 'rgba(16,185,129,0.5)'
+    elif pct >= 65: return 'var(--accent-blue)', 'rgba(59,130,246,0.5)'
+    elif pct >= 45: return 'var(--accent-amber)', 'rgba(245,158,11,0.5)'
     return 'var(--accent-rose)', 'rgba(244,63,94,0.5)'
 
 for team in ['HO', 'DC', 'Branch']:
@@ -97,7 +99,7 @@ for team in ['HO', 'DC', 'Branch']:
     <div class="ranking-item" style="{'border: 1px solid rgba(250,204,21,0.3);' if team=='HO' else ''}">
         <div class="rank-header">
             <span class="rank-name" style="font-size: 1.15rem;">{medal} ทีม {team}</span>
-            <span class="rank-val" style="font-size: 1.1rem;">
+            <span class="rank-val" style="font-size: 1.1rem; color: {get_text_color(all_pct)};">
                 ภาพรวม {all_pct}% 
                 <span style="font-size: 0.85rem; color: #9ca3af; font-weight: normal; margin-left: 5px;">({team_all_s:,} / {team_all_t:,})</span>
             </span>
