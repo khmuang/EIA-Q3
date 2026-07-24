@@ -1640,9 +1640,9 @@
                 
                 // Determine color for Compliance Rate %
                 let rateColor = 'var(--accent-rose)';
-                if (item.compliance >= 90) rateColor = 'var(--accent-emerald)';
-                else if (item.compliance >= 70) rateColor = 'var(--accent-blue)';
-                else if (item.compliance >= 50) rateColor = 'var(--accent-amber)';
+                if (item.compliance >= 85) rateColor = 'var(--accent-emerald)';
+                else if (item.compliance >= 65) rateColor = 'var(--accent-blue)';
+                else if (item.compliance >= 45) rateColor = 'var(--accent-amber)';
 
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -1663,9 +1663,9 @@
             
             const overallRate = (totalY + totalN) > 0 ? Math.round((totalY / (totalY + totalN)) * 100) : 0;
             let overallRateColor = 'var(--accent-rose)';
-            if (overallRate >= 90) overallRateColor = 'var(--accent-emerald)';
-            else if (overallRate >= 70) overallRateColor = 'var(--accent-blue)';
-            else if (overallRate >= 50) overallRateColor = 'var(--accent-amber)';
+            if (overallRate >= 85) overallRateColor = 'var(--accent-emerald)';
+            else if (overallRate >= 65) overallRateColor = 'var(--accent-blue)';
+            else if (overallRate >= 45) overallRateColor = 'var(--accent-amber)';
 
             totalRow.innerHTML = `
                 <td style="font-weight: 900; color: #fff;">Grand Total (ผลรวมทั้งหมด)</td>
