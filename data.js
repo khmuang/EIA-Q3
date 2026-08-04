@@ -1,4 +1,4 @@
-// Automatically generated at 2026-08-04 09:30:04
+// Automatically generated at 2026-08-04 15:30:04
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -668,7 +668,7 @@ const DASHBOARD_DATA = {
         "1.1": {
             "Q2": {
                 "total": 7,
-                "success": 0,
+                "success": 2,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 2,
@@ -676,13 +676,13 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 5,
-                        "success": 0
+                        "success": 2
                     }
                 }
             },
             "Q3": {
                 "total": 53,
-                "success": 0,
+                "success": 4,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 29,
@@ -690,7 +690,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 14,
-                        "success": 0
+                        "success": 1
                     },
                     "CMG": {
                         "total": 1,
@@ -702,7 +702,7 @@ const DASHBOARD_DATA = {
                     },
                     "Unknown": {
                         "total": 4,
-                        "success": 0
+                        "success": 3
                     }
                 }
             }
@@ -726,7 +726,7 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 397,
-                "success": 50,
+                "success": 54,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 227,
@@ -734,7 +734,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 10,
-                        "success": 1
+                        "success": 5
                     },
                     "CMG": {
                         "total": 84,
@@ -938,7 +938,7 @@ const DASHBOARD_DATA = {
         "8": {
             "Q3": {
                 "total": 3,
-                "success": 0,
+                "success": 2,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 1,
@@ -946,7 +946,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 2,
-                        "success": 0
+                        "success": 2
                     }
                 }
             }
@@ -1448,7 +1448,7 @@ const DASHBOARD_DATA = {
             },
             "Q2": {
                 "total": 41,
-                "success": 40,
+                "success": 41,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 5,
@@ -1456,7 +1456,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 11,
-                        "success": 10
+                        "success": 11
                     },
                     "CNG": {
                         "total": 1,
@@ -1498,7 +1498,7 @@ const DASHBOARD_DATA = {
             },
             "Q3": {
                 "total": 246,
-                "success": 243,
+                "success": 244,
                 "bu_breakdown": {
                     "Audit": {
                         "total": 11,
@@ -1518,7 +1518,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 40,
-                        "success": 37
+                        "success": 38
                     },
                     "CGHR": {
                         "total": 2,
@@ -1601,4 +1601,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-08-04 09:30:04';
+const LAST_UPDATED = '2026-08-04 15:30:04';
