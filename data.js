@@ -1,4 +1,4 @@
-// Automatically generated at 2026-08-06 15:30:04
+// Automatically generated at 2026-08-07 09:30:21
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -836,11 +836,11 @@ const DASHBOARD_DATA = {
         "5": {
             "Q2": {
                 "total": 6,
-                "success": 2,
+                "success": 3,
                 "bu_breakdown": {
                     "CMG": {
                         "total": 6,
-                        "success": 2
+                        "success": 3
                     }
                 }
             },
@@ -1601,4 +1601,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-08-06 15:30:04';
+const LAST_UPDATED = '2026-08-07 09:30:21';
