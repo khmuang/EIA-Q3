@@ -1,4 +1,4 @@
-// Automatically generated at 2026-08-10 09:30:04
+// Automatically generated at 2026-08-10 15:30:04
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -108,7 +108,7 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 1753,
-                "success": 20,
+                "success": 21,
                 "bu_breakdown": {
                     "B2S": {
                         "total": 77,
@@ -124,7 +124,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 294,
-                        "success": 7
+                        "success": 8
                     },
                     "CMG": {
                         "total": 8,
@@ -240,7 +240,7 @@ const DASHBOARD_DATA = {
         "3": {
             "Q3": {
                 "total": 1378,
-                "success": 664,
+                "success": 672,
                 "bu_breakdown": {
                     "B2S": {
                         "total": 70,
@@ -264,7 +264,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 470,
-                        "success": 137
+                        "success": 139
                     },
                     "CMG": {
                         "total": 151,
@@ -272,7 +272,7 @@ const DASHBOARD_DATA = {
                     },
                     "CRP": {
                         "total": 59,
-                        "success": 40
+                        "success": 44
                     },
                     "FAST": {
                         "total": 2,
@@ -292,7 +292,7 @@ const DASHBOARD_DATA = {
                     },
                     "PWB": {
                         "total": 56,
-                        "success": 32
+                        "success": 34
                     },
                     "RIS": {
                         "total": 1,
@@ -337,8 +337,8 @@ const DASHBOARD_DATA = {
                 }
             },
             "Q3": {
-                "total": 370,
-                "success": 187,
+                "total": 369,
+                "success": 177,
                 "bu_breakdown": {
                     "B2S": {
                         "total": 51,
@@ -346,15 +346,15 @@ const DASHBOARD_DATA = {
                     },
                     "CDG": {
                         "total": 134,
-                        "success": 68
+                        "success": 67
                     },
                     "CFR": {
                         "total": 62,
-                        "success": 15
+                        "success": 13
                     },
                     "CMG": {
                         "total": 10,
-                        "success": 9
+                        "success": 6
                     },
                     "CRP": {
                         "total": 4,
@@ -369,8 +369,8 @@ const DASHBOARD_DATA = {
                         "success": 1
                     },
                     "PWB": {
-                        "total": 77,
-                        "success": 31
+                        "total": 76,
+                        "success": 30
                     },
                     "RIS": {
                         "total": 1,
@@ -378,7 +378,7 @@ const DASHBOARD_DATA = {
                     },
                     "SSP": {
                         "total": 26,
-                        "success": 9
+                        "success": 6
                     },
                     "TCR": {
                         "total": 1,
@@ -460,11 +460,11 @@ const DASHBOARD_DATA = {
         "6": {
             "Q2": {
                 "total": 10,
-                "success": 3,
+                "success": 4,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 6,
-                        "success": 3
+                        "success": 4
                     },
                     "CFR": {
                         "total": 1,
@@ -726,11 +726,11 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 397,
-                "success": 88,
+                "success": 102,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 227,
-                        "success": 32
+                        "success": 34
                     },
                     "CFR": {
                         "total": 10,
@@ -738,7 +738,7 @@ const DASHBOARD_DATA = {
                     },
                     "CMG": {
                         "total": 84,
-                        "success": 43
+                        "success": 55
                     },
                     "PWB": {
                         "total": 76,
@@ -774,23 +774,23 @@ const DASHBOARD_DATA = {
         "3": {
             "Q3": {
                 "total": 279,
-                "success": 181,
+                "success": 188,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 88,
-                        "success": 69
+                        "success": 70
                     },
                     "CFR": {
                         "total": 126,
-                        "success": 73
+                        "success": 74
                     },
                     "CMG": {
                         "total": 37,
-                        "success": 17
+                        "success": 21
                     },
                     "PWB": {
                         "total": 27,
-                        "success": 21
+                        "success": 22
                     },
                     "SSP": {
                         "total": 1,
@@ -811,7 +811,7 @@ const DASHBOARD_DATA = {
                 }
             },
             "Q3": {
-                "total": 18,
+                "total": 19,
                 "success": 5,
                 "bu_breakdown": {
                     "CDG": {
@@ -827,7 +827,7 @@ const DASHBOARD_DATA = {
                         "success": 0
                     },
                     "PWB": {
-                        "total": 3,
+                        "total": 4,
                         "success": 2
                     }
                 }
@@ -1026,7 +1026,7 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 781,
-                "success": 197,
+                "success": 212,
                 "bu_breakdown": {
                     "CBD": {
                         "total": 1,
@@ -1034,11 +1034,11 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 233,
-                        "success": 70
+                        "success": 72
                     },
                     "CGHR": {
                         "total": 9,
-                        "success": 4
+                        "success": 6
                     },
                     "CGO": {
                         "total": 10,
@@ -1050,7 +1050,7 @@ const DASHBOARD_DATA = {
                     },
                     "CRP": {
                         "total": 6,
-                        "success": 3
+                        "success": 5
                     },
                     "CU": {
                         "total": 5,
@@ -1070,11 +1070,11 @@ const DASHBOARD_DATA = {
                     },
                     "RIS": {
                         "total": 140,
-                        "success": 8
+                        "success": 9
                     },
                     "SSP": {
                         "total": 101,
-                        "success": 47
+                        "success": 55
                     }
                 }
             },
@@ -1158,7 +1158,7 @@ const DASHBOARD_DATA = {
         "3": {
             "Q3": {
                 "total": 901,
-                "success": 693,
+                "success": 701,
                 "bu_breakdown": {
                     "Audit": {
                         "total": 9,
@@ -1178,7 +1178,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 294,
-                        "success": 225
+                        "success": 230
                     },
                     "CGHR": {
                         "total": 7,
@@ -1202,7 +1202,7 @@ const DASHBOARD_DATA = {
                     },
                     "CRP": {
                         "total": 116,
-                        "success": 83
+                        "success": 85
                     },
                     "CU": {
                         "total": 25,
@@ -1234,7 +1234,7 @@ const DASHBOARD_DATA = {
                     },
                     "SSP": {
                         "total": 62,
-                        "success": 46
+                        "success": 47
                     },
                     "T1C": {
                         "total": 21,
@@ -1601,4 +1601,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-08-10 09:30:04';
+const LAST_UPDATED = '2026-08-10 15:30:04';
