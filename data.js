@@ -1,4 +1,4 @@
-// Automatically generated at 2026-08-13 09:45:49
+// Automatically generated at 2026-08-13 17:41:26
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -726,11 +726,11 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 397,
-                "success": 102,
+                "success": 109,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 227,
-                        "success": 34
+                        "success": 35
                     },
                     "CFR": {
                         "total": 10,
@@ -738,11 +738,11 @@ const DASHBOARD_DATA = {
                     },
                     "CMG": {
                         "total": 84,
-                        "success": 55
+                        "success": 59
                     },
                     "PWB": {
                         "total": 76,
-                        "success": 8
+                        "success": 10
                     }
                 }
             },
@@ -758,15 +758,15 @@ const DASHBOARD_DATA = {
             },
             "Q3": {
                 "total": 15,
-                "success": 2,
+                "success": 9,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 7,
-                        "success": 1
+                        "success": 7
                     },
                     "PWB": {
                         "total": 8,
-                        "success": 1
+                        "success": 2
                     }
                 }
             }
@@ -812,11 +812,11 @@ const DASHBOARD_DATA = {
             },
             "Q3": {
                 "total": 19,
-                "success": 5,
+                "success": 12,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 9,
-                        "success": 0
+                        "success": 6
                     },
                     "CFR": {
                         "total": 4,
@@ -824,7 +824,7 @@ const DASHBOARD_DATA = {
                     },
                     "CMG": {
                         "total": 2,
-                        "success": 0
+                        "success": 1
                     },
                     "PWB": {
                         "total": 4,
@@ -836,21 +836,21 @@ const DASHBOARD_DATA = {
         "5": {
             "Q2": {
                 "total": 6,
-                "success": 5,
+                "success": 6,
                 "bu_breakdown": {
                     "CMG": {
                         "total": 6,
-                        "success": 5
+                        "success": 6
                     }
                 }
             },
             "Q3": {
                 "total": 17,
-                "success": 13,
+                "success": 14,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 9,
-                        "success": 8
+                        "success": 9
                     },
                     "CFR": {
                         "total": 4,
@@ -870,11 +870,11 @@ const DASHBOARD_DATA = {
         "7": {
             "Q1": {
                 "total": 83,
-                "success": 40,
+                "success": 49,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 52,
-                        "success": 39
+                        "success": 48
                     },
                     "CFR": {
                         "total": 9,
@@ -892,11 +892,11 @@ const DASHBOARD_DATA = {
             },
             "Q2": {
                 "total": 47,
-                "success": 21,
+                "success": 23,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 7,
-                        "success": 6
+                        "success": 7
                     },
                     "CFR": {
                         "total": 7,
@@ -904,7 +904,7 @@ const DASHBOARD_DATA = {
                     },
                     "CMG": {
                         "total": 14,
-                        "success": 10
+                        "success": 11
                     },
                     "PWB": {
                         "total": 19,
@@ -1601,4 +1601,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-08-13 09:45:49';
+const LAST_UPDATED = '2026-08-13 17:41:26';
