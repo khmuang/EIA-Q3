@@ -1,4 +1,4 @@
-// Automatically generated at 2026-08-19 09:30:07
+// Automatically generated at 2026-08-19 15:30:03
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -726,7 +726,7 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 397,
-                "success": 133,
+                "success": 135,
                 "bu_breakdown": {
                     "CDG": {
                         "total": 227,
@@ -738,11 +738,11 @@ const DASHBOARD_DATA = {
                     },
                     "CMG": {
                         "total": 84,
-                        "success": 66
+                        "success": 67
                     },
                     "PWB": {
                         "total": 76,
-                        "success": 13
+                        "success": 14
                     }
                 }
             },
@@ -1026,7 +1026,7 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 781,
-                "success": 248,
+                "success": 254,
                 "bu_breakdown": {
                     "CBD": {
                         "total": 1,
@@ -1058,7 +1058,7 @@ const DASHBOARD_DATA = {
                     },
                     "FAST": {
                         "total": 179,
-                        "success": 70
+                        "success": 73
                     },
                     "OFM": {
                         "total": 1,
@@ -1066,7 +1066,7 @@ const DASHBOARD_DATA = {
                     },
                     "PWB": {
                         "total": 91,
-                        "success": 10
+                        "success": 11
                     },
                     "RIS": {
                         "total": 140,
@@ -1074,7 +1074,7 @@ const DASHBOARD_DATA = {
                     },
                     "SSP": {
                         "total": 101,
-                        "success": 59
+                        "success": 61
                     }
                 }
             },
@@ -1601,4 +1601,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-08-19 09:30:07';
+const LAST_UPDATED = '2026-08-19 15:30:03';
