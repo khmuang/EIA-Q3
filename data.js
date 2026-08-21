@@ -1,4 +1,4 @@
-// Automatically generated at 2026-08-21 09:30:04
+// Automatically generated at 2026-08-21 15:30:03
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -1026,7 +1026,7 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 781,
-                "success": 259,
+                "success": 270,
                 "bu_breakdown": {
                     "CBD": {
                         "total": 1,
@@ -1034,7 +1034,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 233,
-                        "success": 83
+                        "success": 86
                     },
                     "CGHR": {
                         "total": 9,
@@ -1058,7 +1058,7 @@ const DASHBOARD_DATA = {
                     },
                     "FAST": {
                         "total": 179,
-                        "success": 76
+                        "success": 79
                     },
                     "OFM": {
                         "total": 1,
@@ -1066,7 +1066,7 @@ const DASHBOARD_DATA = {
                     },
                     "PWB": {
                         "total": 91,
-                        "success": 12
+                        "success": 16
                     },
                     "RIS": {
                         "total": 140,
@@ -1074,7 +1074,7 @@ const DASHBOARD_DATA = {
                     },
                     "SSP": {
                         "total": 101,
-                        "success": 62
+                        "success": 63
                     }
                 }
             },
@@ -1601,4 +1601,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-08-21 09:30:04';
+const LAST_UPDATED = '2026-08-21 15:30:03';
