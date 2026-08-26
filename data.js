@@ -1,4 +1,4 @@
-// Automatically generated at 2026-08-26 09:30:04
+// Automatically generated at 2026-08-26 16:08:57
 const DASHBOARD_DATA = {
     "Branch": {
         "1.1": {
@@ -1026,7 +1026,7 @@ const DASHBOARD_DATA = {
         "2": {
             "Q1": {
                 "total": 781,
-                "success": 283,
+                "success": 286,
                 "bu_breakdown": {
                     "CBD": {
                         "total": 1,
@@ -1034,7 +1034,7 @@ const DASHBOARD_DATA = {
                     },
                     "CFR": {
                         "total": 233,
-                        "success": 89
+                        "success": 92
                     },
                     "CGHR": {
                         "total": 9,
@@ -1601,4 +1601,4 @@ const DASHBOARD_DATA = {
         }
     }
 };
-const LAST_UPDATED = '2026-08-26 09:30:04';
+const LAST_UPDATED = '2026-08-26 16:08:57';
